@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onplay Event Example</title>
+  </head>
+  <body>
+    <audio id="myAudio" controls>
+      <source
+        src="./sunflower-street-drumloop-85bpm-163900.mp3"
+        type="audio/mp3"
+      />
+      Your browser does not support the audio tag.
+    </audio>
+
+    <script>
+      var audioElement = document.getElementById("myAudio");
+
+      // Add onplay event listener
+      audioElement.addEventListener("play", function () {
+        console.log("audio is playing");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onsubmit Event Example</title>
+  </head>
+  <body>
+    <form id="myForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" />
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+    <div id="userdetails"></div>
+    <script>
+      var myForm = document.getElementById("myForm");
+      // Add onsubmit event listener
+
+      let arr = [];
+
+      let userdisplay = document.getElementById("userdetails");
+
+      myForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        let udet = {
+          name: username,
+          password: password,
+        };
+        arr.push(udet);
+        let h3 = document.createElement("h3");
+        arr.forEach((ele) => {
+          h3.innerText = `name:${ele.name} and password:${ele.password}`;
+        });
+        userdisplay.append(h3);
+      });
+    </script>
+  </body>
+</html>

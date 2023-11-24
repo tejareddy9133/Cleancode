@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onmouseover Event Example</title>
+  </head>
+  <body>
+    <div
+      id="myDiv"
+      style="width: 200px; height: 200px; background-color: lightblue"
+    ></div>
+
+    <script>
+      var myDiv = document.getElementById("myDiv");
+
+      // Add onmouseover event listener
+
+      myDiv.addEventListener("mouseover", function () {
+        myDiv.style.backgroundColor = "lightcoral";
+      });
+      myDiv.addEventListener("mouseleave", function () {
+        myDiv.style.backgroundColor = "yellow";
+      });
+
+      window.onload = function () {
+        alert("this is dangeroys");
+      };
+    </script>
+  </body>
+</html>

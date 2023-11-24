@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onchange Event Example</title>
+  </head>
+  <body>
+    <select id="mySelect">
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+    </select>
+
+    <script>
+      var mySelect = document.getElementById("mySelect");
+
+      mySelect.addEventListener("change", function () {
+        console.log(mySelect.value);
+      });
+    </script>
+  </body>
+</html>

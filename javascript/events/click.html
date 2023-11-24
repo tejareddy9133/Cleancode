@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onclick Event Example</title>
+  </head>
+
+  <body>
+    <h1 id="headingline">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ad iure
+      modi ab at neque harum culpa, adipisci corrupti dolorem maiores? Suscipit,
+      voluptatibus. Enim aperiam rerum ipsum inventore nisi veniam?
+    </h1>
+    <button id="myButton">Click me</button>
+
+    <script>
+      let h1 = document.getElementById("headingline");
+      let visible = false;
+      let button = document.getElementById("myButton");
+
+      button.addEventListener("click", function () {
+        if (visible) {
+          visible = !visible;
+          h1.style.display = "block";
+          button.innerText = "hide";
+        } else {
+          visible = !visible;
+          h1.style.display = "none";
+          button.innerText = "show";
+        }
+      });
+    </script>
+  </body>
+</html>
