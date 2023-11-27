@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="clock">
+      <h1 id="time"></h1>
+    </div>
+  </body>
+  <script>
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getMonth();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    let h1 = document.getElementById("time");
+
+    setInterval(() => {
+      if (seconds < 59) {
+        seconds += 1;
+      } else {
+        seconds = 0;
+      }
+
+      if (seconds == 0) {
+        minute += 1;
+      } else {
+        if (minutes > 59) {
+          minutes = 0;
+        }
+      }
+
+      if (minutes == 0) {
+        hours += 1;
+      } else {
+        if (hours > 23) {
+          hours = 0;
+        }
+      }
+
+      h1.innerText = `Year : ${year} month : ${month} day : ${day}  hours : ${hours} minutes : ${minutes} seconds :  ${seconds}`;
+      console.log(time);
+    }, 1000);
+  </script>
+</html>

@@ -11,12 +11,21 @@
       <option value="option2">Option 2</option>
       <option value="option3">Option 3</option>
     </select>
-
+    <input type="text" id="suriya" placeholder="please enter the details" />
+    <p id="details"></p>
     <script>
       var mySelect = document.getElementById("mySelect");
 
       mySelect.addEventListener("change", function () {
         console.log(mySelect.value);
+      });
+
+      let input = document.getElementById("suriya");
+      let ptag = document.getElementById("details");
+
+      input.addEventListener("input", function () {
+        ptag.innerText = input.value;
+        console.log("value");
       });
     </script>
   </body>
