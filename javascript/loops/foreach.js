@@ -140,7 +140,9 @@ let data = [
     dob: "3/4/1911",
   },
 ];
+
 let div = document.getElementById("cont");
+
 data.forEach((ele) => {
   let childdiv = document.createElement("div");
   let h1 = document.createElement("h1");

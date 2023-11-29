@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: teal">
+    <h1 style="text-align: center">Signin page</h1>
+    <div style="display: block; margin: auto; margin-left: 45%">
+      <form style="display: grid; gap: 30px">
+        <div>
+          <label for="">Username</label>
+          <input type="text" id="username" placeholder="Enter user name" />
+        </div>
+       
+          <label for="">password</label>
+          <input type="text" id="password" placeholder="Enter user password" />
+        </div>
+        <div>
+          <button
+            style="
+              height: 40px;
+              background-color: red;
+              color: white;
+              width: auto;
+            "
+            onclick="Signin()"
+          >
+            Signin
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+    function Signin(){
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+
+        let data=JSON.parse(localStorage.getItem("userdata"))
+
+        data.forEach((user)=>{
+            if(username===user.username&&password===user.password){
+                alert("login sucessfully")
+                window.location.href="storage.html"
+                return
+            }
+        })
+
+        alert("login failed invalid username and password")
+
+    }
+  </script>
+</html>

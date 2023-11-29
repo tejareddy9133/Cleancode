@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: teal">
+    <h1 style="text-align: center">Signup page</h1>
+    <div style="display: block; margin: auto; margin-left: 45%">
+      <form style="display: grid; gap: 30px">
+        <div>
+          <label for="">Username</label>
+          <input type="text" id="username" placeholder="Enter user name" />
+        </div>
+        <div>
+          <label for="">email</label>
+          <input type="email" placeholder="Enter user email" />
+        </div>
+        <div>
+          <label for="">phone number</label>
+          <input type="tel" placeholder="Enter user phonenumber" />
+        </div>
+        <div>
+          <label for="">password</label>
+          <input type="text" id="password" placeholder="Enter user password" />
+        </div>
+        <div>
+          <button
+            style="
+              height: 40px;
+              background-color: red;
+              color: white;
+              width: auto;
+            "
+            onclick="Signup()"
+          >
+            Signup
+          </button>
+        </div>
+      </form>
+    </div>
+    <script>
+      function Signup() {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        let user = {
+          username: username,
+          password: password,
+        };
+
+        let data = JSON.parse(localStorage.getItem("userdata")) || []; //2
+
+        data.forEach((user) => {
+          if (username == user.username) {
+            alert("user allready existed");
+            return;
+          }
+        });
+        data.push(user);
+        //1
+        localStorage.setItem("userdata", JSON.stringify(data));
+        window.location.href = "Signin.html";
+        alert("Signed up sucess fully"); //updating the data to server
+      }
+    </script>
+  </body>
+</html>
