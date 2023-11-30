@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <div
+      class="panel panel-{{::c.options.color}} b border "
+      style="font-family: 'Roboto'"
+      ng-if="c.data.isValid && (c.options.always_show || c.data.filterText || c.data.list.length)"
+    >
+      <div class="panel-heading" ng-if="::!c.options.hide_header">
+        <h3 class="h4 panel-title">
+          <span ng-if="c.options.glyph">
+            <fa name="{{::c.options.glyph}}" /> </span
+          ><b>{{::c.options.title}} </b>
+          &nbsp;
+          <span
+            ng-if="c.data.list.length"
+            class="label label-as-badge label-primary sp-navbar-badge-count ng-binding ng-scope"
+            >{{c.data.count}}</span
+          >
+        </h3>
+
+        <a
+          style="color: '#00ADC2'"
+          id="previous-btn"
+          href="javascript:void(0)"
+          ng-click="previousPage()"
+          aria-label="${Pagination button Previous}"
+        >
+          <i class="fa fa-chevron-left" aria-hidden="true"></i
+        ></a>
+
+        <a style="color: '#00ADC2'">
+          {{data.pagination.to}} ${of} {{data.pagination.of}}</a
+        >
+
+        <a
+          style="color: '#00ADC2'"
+          id="next_btn"
+          href="javascript:void(0)"
+          ng-click="nextPage()"
+          aria-label="${Pagination button Next}"
+        >
+          <i class="fa fa-chevron-right" aria-hidden="true"></i
+        ></a>
+      </div>
+
+      <!--- <div class="panel-footer" ng-if="c.options.maximum_entries && c.data.count > c.options.maximum_entries">
+     
+      <div class="h4 number-show-label panel-title" style="line-height: 20px">
+        ${Showing items {{c.start + 1}} - {{c.end}} of {{c.data.count}}}
+      </div>
+   
+      <nav id="prev-tab-nav" class="pull-right" aria-label="Previous requests and tasks page navigation">
+        <ul class="pagination">
+          <li>
+            <a href="javascript:void(0)" aria-label="Previous" ng-disabled="c.currentPage == 1" ng-click="c.setCurrentPage(c.currentPage -1)">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" aria-label="Next" id="prev-tab-next" ng-disabled="c.currentPage == c.numPages" ng-click="c.setCurrentPage(c.currentPage + 1)">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+     
+     
+      <div class="clearfix"></div>
+    </div>--->
+
+      <ul
+        ng-if="c.data.count<=3"
+        class="list-group hide-x-overflow nodata1"
+        ng-style="maxHeight:300px"
+        style="overflow-y: auto"
+      >
+        <li
+          ng-if="c.data.list.length > 0"
+          ng-repeat="item in c.data.list track by item.sys_id"
+          class="list-group-item padder"
+        >
+          <div
+            class="focus-inline-block bb"
+            ng-click="c.onClick($event, item, item.url, {})"
+            href="javascript:void(0)"
+          >
+            <span
+              ng-repeat="action in c.data.actions"
+              href=""
+              ng-click="c.onClick($event, item, action.url, action)"
+              ng-if="action.glyph"
+              class="list-action l-h-40 pull-right"
+            >
+              <fa name="{{action.glyph}}" ng-class="c.getActionColor(action)" />
+            </span>
+            <span
+              ng-if="c.options.image_field"
+              class="pull-left m-r"
+              ng-class="{'avatar': c.options.rounded_images, 'thumb-sm': c.options.rounded_images}"
+            >
+              <img
+                ng-src="{{item.image_field}}"
+                alt="..."
+                class="img-sm"
+                ng-class="{'img-circle': c.options.rounded_images}"
+              />
+            </span>
+            <div>
+              <div
+                ng-switch
+                on="item.display_field.type"
+                ng-class="{'l-h-40': !item.secondary_fields.length}"
+                style="padding-bottom: 5px"
+              >
+                <span
+                  class="translated-html"
+                  ng-switch-when="translated_html"
+                  ng-bind-html="item.display_field.value"
+                ></span>
+                <div class="row" style="padding: 0 13px; position: relative">
+                  <div class="col-lg-6 col-md-4 col-xs-6 sub-padding size">
+                    <div ng-switch-default><b>{{::item.display_field}}</b></div>
+                  </div>
+                  <div
+                    class="col-lg-5 col-md-12 col-xs-12 sub-padding p-l-15-lg"
+                  >
+                    <span class="state size" title="State">
+                      <span><b>{{item.record_state}}</b></span>
+                    </span>
+                  </div>
+                  <div class="col-lg-1 col-md-12 col-xs-12 p-l-15-lg">
+                    <span
+                      class="icon icon-circle-solid dot-priority {{item.record_priority}}"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <small class="text-muted">
+            <div class="row color" style="padding: 0 13px; position: relative">
+              <div class="col-lg-4 col-md-12 col-xs-6 sub-padding">
+                <b>
+                  <span class="text-number size" title="Number">
+                    {{item.record_number}}</span
+                  >
+                </b>
+              </div>
+            </div>
+          </small>
+        </li>
+        <div ng-if="!c.data.list.length" class="list-group-item nodata1">
+          ${No issues reported by you}
+        </div>
+      </ul>
+
+      <ul
+        ng-if="c.data.count>3"
+        class="list-group hide-x-overflow nodata2"
+        ng-style="maxHeight:300px"
+        style="overflow-y: auto"
+      >
+        <li
+          ng-if="c.data.list.length > 0"
+          ng-repeat="item in c.data.list track by item.sys_id"
+          class="list-group-item padder"
+        >
+          <div
+            class="focus-inline-block bb"
+            ng-click="c.onClick($event, item, item.url, {})"
+            href="javascript:void(0)"
+          >
+            <span
+              ng-repeat="action in c.data.actions"
+              href=""
+              ng-click="c.onClick($event, item, action.url, action)"
+              ng-if="action.glyph"
+              class="list-action l-h-40 pull-right"
+            >
+              <fa name="{{action.glyph}}" ng-class="c.getActionColor(action)" />
+            </span>
+            <span
+              ng-if="c.options.image_field"
+              class="pull-left m-r"
+              ng-class="{'avatar': c.options.rounded_images, 'thumb-sm': c.options.rounded_images}"
+            >
+              <img
+                ng-src="{{item.image_field}}"
+                alt="..."
+                class="img-sm"
+                ng-class="{'img-circle': c.options.rounded_images}"
+              />
+            </span>
+            <div>
+              <div
+                ng-switch
+                on="item.display_field.type"
+                ng-class="{'l-h-40': !item.secondary_fields.length}"
+                style="padding-bottom: 5px"
+              >
+                <span
+                  class="translated-html"
+                  ng-switch-when="translated_html"
+                  ng-bind-html="item.display_field.value"
+                ></span>
+                <div class="row" style="padding: 0 13px; position: relative">
+                  <div class="col-lg-6 col-md-4 col-xs-6 sub-padding size">
+                    <div ng-switch-default><b>{{::item.display_field}}</b></div>
+                  </div>
+
+                  <div
+                    class="col-lg-5 col-md-12 col-xs-12 sub-padding p-l-15-lg"
+                  >
+                    <span class="state size" title="State">
+                      <span><b>{{item.record_state}}</b></span>
+                    </span>
+                  </div>
+                  <div class="col-lg-1 col-md-12 col-xs-12 p-l-15-lg">
+                    <span
+                      class="icon icon-circle-solid dot-priority {{item.record_priority}}"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <small class="text-muted">
+            <div class="row color" style="padding: 0 13px; position: relative">
+              <div class="col-lg-4 col-md-12 col-xs-6 sub-padding">
+                <b>
+                  <span class="text-number size" title="Number">
+                    {{item.record_number}}</span
+                  >
+                </b>
+              </div>
+            </div>
+          </small>
+        </li>
+        <div ng-if="!c.data.list.length" class="list-group-item nodata">
+          ${No issues reported by you}
+        </div>
+      </ul>
+
+      <div
+        class="panel-footer"
+        ng-if="!c.options.hide_footer && c.options.maximum_entries && c.data.count > c.options.maximum_entries"
+      >
+        <a ng-href="?id=my_requests"><b>${View all}</b></a>
+      </div>
+    </div>
+  </body>
+</html>
