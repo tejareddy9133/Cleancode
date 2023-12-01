@@ -144,12 +144,15 @@ let data = [
 let div = document.getElementById("cont");
 
 data.forEach((ele) => {
-  let childdiv = document.createElement("div");
-  let h1 = document.createElement("h1");
-  let h2 = document.createElement("h2");
-  h1.innerText = ele.name;
-  h2.innerText = ele.company_name;
+  let div2 = document.createElement("div");
 
-  childdiv.append(h1, h2);
-  div.append(childdiv);
+  let h1 = document.createElement("h1");
+  h1.innerText = ele.name;
+
+  let p = document.createElement("p");
+  p.innerText = ele.company_name;
+  p.style.color = "white";
+
+  div2.append(h1, p);
+  div.append(div2);
 });
