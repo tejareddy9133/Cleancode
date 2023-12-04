@@ -9,23 +9,29 @@
     <div
       id="myDiv"
       style="width: 200px; height: 200px; background-color: lightblue"
-    ></div>
+    >
+      <input type="text" id="ipt" />
+      <p id="para"></p>
+    </div>
 
     <script>
       var myDiv = document.getElementById("myDiv");
 
       // Add onmouseover event listener
 
-      myDiv.addEventListener("mouseover", function () {
-        myDiv.style.backgroundColor = "lightcoral";
+      myDiv.addEventListener("mouseover", () => {
+        myDiv.style.backgroundColor = "red";
       });
-      myDiv.addEventListener("mouseleave", function () {
+
+      myDiv.addEventListener("mouseout", () => {
         myDiv.style.backgroundColor = "yellow";
       });
 
-      window.onload = function () {
-        alert("this is dangeroys");
-      };
+      let ipt = document.getElementById("ipt");
+      ipt.addEventListener("change", () => {
+        let p = document.getElementById("para");
+        p.innerText = ipt.value;
+      });
     </script>
   </body>
 </html>

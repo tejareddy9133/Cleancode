@@ -3,33 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>onclick Event Example</title>
+    <title>Document</title>
   </head>
-
   <body>
-    <h1 id="headingline">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ad iure
-      modi ab at neque harum culpa, adipisci corrupti dolorem maiores? Suscipit,
-      voluptatibus. Enim aperiam rerum ipsum inventore nisi veniam?
-    </h1>
-    <button id="myButton">Click me</button>
-
-    <script>
-      let h1 = document.getElementById("headingline");
-      let visible = false;
-      let button = document.getElementById("myButton");
-
-      button.addEventListener("click", function () {
-        if (visible) {
-          visible = !visible;
-          h1.style.display = "block";
-          button.innerText = "hide";
-        } else {
-          visible = !visible;
-          h1.style.display = "none";
-          button.innerText = "show";
-        }
-      });
-    </script>
+    <p id="Para">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum cum
+      itaque voluptates, corporis fugit, debitis laudantium ratione cupiditate
+      blanditiis esse, eum maiores. Possimus non qui dolores, quam voluptatem
+      recusandae molestiae.
+    </p>
+    <button id="btn">Hide</button>
   </body>
+  <script>
+    let para = document.getElementById("Para");
+    let btn = document.getElementById("btn");
+
+    let text = true;
+
+    btn.addEventListener("click", function () {
+      if (text) {
+        para.style.display = "none";
+
+        btn.innerText = "show";
+        text = false;
+      } else if (text == false) {
+        para.style.display = "block";
+
+        btn.innerText = "Hide";
+        text = true;
+      }
+    });
+  </script>
 </html>

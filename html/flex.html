@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #parent {
+      height: 400px;
+      width: 100%;
+      display: flex;
+      gap: 30px;
+      justify-content: space-between;
+      align-items: end;
+      border: 1px solid red;
+    }
+    #parent > div {
+      height: 80px;
+      width: 200px;
+    }
+  </style>
+  <body>
+    <div id="parent">
+      <div style="background-color: red"></div>
+      <div style="background-color: yellow"></div>
+      <div style="background-color: black"></div>
+    </div>
+  </body>
+</html>

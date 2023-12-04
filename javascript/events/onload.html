@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Document</title>
+  </head>
+  <body onload="myfun()">
+    <div id="div"></div>
+  </body>
+
+  <script>
+    let div = document.getElementById("div");
+
+    let btn = document.createElement("button");
+    btn.innerText = "refresh";
+
+    function myfun() {
+      console.log("hlo are you there");
+      prompt("hlo");
+    }
+
+    div.append(btn);
+  </script>
+</html>

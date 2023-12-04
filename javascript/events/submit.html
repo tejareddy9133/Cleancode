@@ -6,7 +6,7 @@
     <title>onsubmit Event Example</title>
   </head>
   <body>
-    <form id="myForm">
+    <form id="myForm" action="">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" />
       <br />
@@ -19,24 +19,23 @@
     <script>
       var myForm = document.getElementById("myForm");
       // Add onsubmit event listener
-      let arr = [];
-      let userdisplay = document.getElementById("userdetails");
-
-      myForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        let username = document.getElementById("username").value;
-        let password = document.getElementById("password").value;
-        let udet = {
-          name: username,
-          password: password,
+      let data = [];
+      myForm.addEventListener("submit", () => {
+        event.preventDefault();
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        let name = username.value;
+        let pass = password.value;
+        console.log("Shubjam");
+        let user = {
+          name,
+          pass,
         };
-        arr.push(udet);
-        let h3 = document.createElement("h3");
-        arr.forEach((ele) => {
-          h3.innerText = `name:${ele.name} and password:${ele.password}`;
-        });
-        userdisplay.append(h3);
+        data.push(user);
+        console.log(data);
+
+        username.value = "";
+        password.value = "";
       });
     </script>
   </body>
