@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="name"></h1>
+  </body>
+
+  <script>
+    let date = new Date();
+    let name = document.getElementById("name");
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    setInterval(() => {
+      if (seconds >= 59) {
+        seconds = 0;
+      } else if (seconds >= 0) {
+        seconds += 1;
+      }
+      if (minutes >= 60) {
+        minutes = 0;
+      } else if (seconds == 0) {
+        minutes += 1;
+      }
+
+      if (hours >= 24) {
+        hours = 0;
+      } else if (minutes == 0 && seconds == 0) {
+        hours += 1;
+      }
+      name.innerText = hours + " : " + minutes + " : " + seconds;
+    }, 1000);
+  </script>
+</html>

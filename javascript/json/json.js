@@ -5,8 +5,10 @@
 //=>converting object in to stringify
 
 let user = {
-  " city": "banglore",
-  " state": "karnatak",
+  city: "banglore",
+  state: "karnatak",
 };
 
-console.log(JSON.parse(user));
+let newuser = JSON.stringify(user); //string
+let second = JSON.parse(newuser); //jo
+console.log(newuser, second);

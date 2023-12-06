@@ -35,34 +35,31 @@
             "
             onclick="Signup()"
           >
-            Signup
+            > Signup
           </button>
         </div>
       </form>
     </div>
     <script>
+      let userArr = JSON.parse(localStorage.getItem("UsersData")) || [];
+
       function Signup() {
-        let username = document.getElementById("username").value;
+        event.preventDefault();
+        let UserName = document.getElementById("username").value;
         let password = document.getElementById("password").value;
+
         let user = {
-          username: username,
-          password: password,
+          UserName,
+          password,
         };
+        userArr.push(user);
 
-        let data = JSON.parse(localStorage.getItem("userdata")) || []; //2
-
-        data.forEach((user) => {
-          if (username == user.username) {
-            alert("user allready existed");
-            return;
-          }
-        });
-        data.push(user);
-        //1
-        localStorage.setItem("userdata", JSON.stringify(data));
-        window.location.href = "Signin.html";
-        alert("Signed up sucess fully"); //updating the data to server
+        localStorage.setItem("UsersData", JSON.stringify(userArr));
+        let data = JSON.parse(localStorage.getItem("UsersData"));
+        console.log(data);
       }
+
+      console.log(userArr);
     </script>
   </body>
 </html>
