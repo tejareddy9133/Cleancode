@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+  </head>
+  <style>
+    #clock_container {
+      background-color: red;
+      height: 40vw;
+      width: 40vw;
+
+      background: url(https://tse1.mm.bing.net/th?id=OIP.vovtDdM3dx2j6rgoGCBDWgHaHJ&pid=Api&P=0&h=180);
+
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    #hour,
+    #minute,
+    #second {
+      position: absolute;
+      background: black;
+      border-radius: 10px;
+    }
+    #hour {
+      width: 1%;
+      height: 17%;
+      margin-left: 19.3%;
+      margin-top: 11.6%;
+      transform-origin: bottom;
+    }
+    #minute {
+      width: 1%;
+      height: 25%;
+      margin-left: 19.3%;
+      margin-top: 7.6%;
+      background-color: red;
+      transform-origin: bottom;
+    }
+    #second {
+      width: 1%;
+      height: 25%;
+      margin-left: 19.3%;
+      margin-top: 7.6%;
+      background-color: yellow;
+      transform-origin: bottom;
+    }
+  </style>
+  <body>
+    <div id="clock_container">
+      <div id="hour"></div>
+      <div id="minute"></div>
+      <div id="second"></div>
+    </div>
+  </body>
+  <script src="clock.js"></script>
+</html>
