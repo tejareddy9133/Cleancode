@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div id="tag_Container"></div>
+      <input type="text" placeholder="enter tag names" id="Inputvalue" />
+    </div>
+  </body>
+  <style>
+    span {
+      background-color: rgb(169, 238, 238);
+      height: 30px;
+      width: auto;
+      margin: 20px;
+    }
+  </style>
+  <script>
+    let input = document.getElementById("Inputvalue");
+    let div = document.getElementById("tag_Container"); // Corrected the ID here
+    let tags = [];
+    input.addEventListener("keydown", function (e) {
+      if (input.value.trim() != "" && e.key == "Enter") {
+        tags.push(input.value.trim());
+        console.log(tags);
+        add();
+      }
+      if (input.value.trim() == "" && e.key == "Backspace") {
+        remove();
+      }
+    });
+
+    function add() {
+      render(tags);
+    }
+
+    function remove() {
+      tags.pop();
+      console.log(tags);
+      render(tags);
+    }
+
+    function render(tags) {
+      div.innerHTML = "";
+      tags.forEach((ta) => {
+        let span = document.createElement("span");
+        span.innerText = ta;
+        div.append(span);
+      });
+    }
+  </script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #tagInputContainer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 10px;
+      }
+
+      #tagsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag {
+        background-color: #3498db;
+        color: #fff;
+        padding: 5px 8px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+      }
+
+      .tag-remove-btn {
+        margin-left: 4px;
+        cursor: pointer;
+      }
+    </style>
+    <title>Tag Input</title>
+  </head>
+
+  <body>
+    <div id="tagInputContainer">
+      <div id="tagsContainer"></div>
+      <input type="text" id="tagInput" placeholder="Add tags..." />
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tagsContainer = document.getElementById("tagsContainer");
+        const tagInput = document.getElementById("tagInput");
+        const tags = [];
+
+        tagInput.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" && tagInput.value.trim() !== "") {
+            addTag(tagInput.value.trim());
+            tagInput.value = "";
+          } else if (
+            e.key === "Backspace" &&
+            tagInput.value === "" &&
+            tags.length > 0
+          ) {
+            removeTag(tags.length - 1);
+          }
+        });
+
+        function addTag(tag) {
+          tags.push(tag);
+          renderTags();
+        }
+
+        function removeTag(index) {
+          tags.splice(index, 1);
+          renderTags();
+        }
+
+        function renderTags() {
+          tagsContainer.innerHTML = "";
+          tags.forEach((tag, index) => {
+            const tagElement = document.createElement("div");
+            tagElement.className = "tag";
+            tagElement.innerHTML = `
+            ${tag}
+            <span class="tag-remove-btn" onclick="removeTag(${index})">x</span>
+          `;
+            tagsContainer.appendChild(tagElement);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
