@@ -1,9 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-import Counter from "./components/Counter";
-import Navbar from "./components/Navbar";
 import Product from "./pages/Product";
+import Camera from "./pages/Camera";
 function App() {
   return (
     <React.Fragment>
